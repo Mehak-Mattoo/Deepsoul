@@ -1,73 +1,68 @@
 // components/HeroSection.tsx
 import React from "react";
+import homeImg from "../../../public/home.webp";
+import Image from "next/image";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="bg-slate-900 text-white min-h-screen p-6 md:p-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {/* Left Column - Hero Text */}
-        <div className="flex flex-col justify-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Your journey to <span className="text-blue-400">inner</span>
-            <br />
-            <span className="text-blue-500">peace</span> begins here
-          </h1>
+    <div className="bg-[#f9e2c5] flex flex-col md:flex-row items-center justify-center mt-10 w-full min-h-screen p-6 md:p-5">
+      {/* Left Column - Hero Text */}
+      <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-6">
+        <h1 className="text-5xl md:text-6xl text-[#49111C] font-semibold mb-6">
+          Your journey to{" "}
+          <span className="font-bold text-[#F40076]">inner peace </span>
+          begins here
+        </h1>
+        <p className="text-sm md:text-base leading-relaxed max-w-xl">
+          DeepSoul connects you with professional therapists, supportive
+          community, and powerful self-help tools for your mental wellbeing
+          journey.
+        </p>
+      </div>
 
-          <p className="text-gray-400 text-lg md:text-xl leading-relaxed max-w-xl">
-            DeepSoul connects you with professional therapists, supportive
-            community, and powerful self-help tools for your mental wellbeing
-            journey.
+      {/* Right Column - Hero Image with Text Bubbles */}
+      <div className="relative w-full md:w-1/2 mx-auto">
+        <Image
+          src={homeImg}
+          alt="Hero Image"
+          className="w-full rounded-lg"
+          width={500}
+          height={500}
+        />
+
+        {/* Floating Text Bubbles */}
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-md">
+          <p className="text-sm font-bold text-blue-600">
+            Discover Inner Peace
           </p>
         </div>
 
-        {/* Right Column - Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          {/* Mental Health Quiz Card */}
-          <div className="bg-slate-800 rounded-lg p-6 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">Mental Health Quiz</h3>
-            <p className="text-gray-400 mb-4">
-              Understand your emotional wellbeing
+        <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transform -rotate-90 origin-center">
+          <div className="bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-md">
+            <p className="text-sm font-bold text-green-600 whitespace-nowrap">
+              Mindful Journey
             </p>
-            <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-200 rounded-full"></div>
           </div>
+        </div>
 
-          {/* Upcoming Therapy Session Card */}
-          <div className="bg-slate-800 rounded-lg p-6 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">
-              Upcoming Therapy Session
-            </h3>
-            <p className="text-gray-400 mb-4">
-              Today at 3:00 PM with Dr. Sarah
+        {/* <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 transform">
+          <div className="bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-md">
+            <p className="text-sm font-bold text-purple-600 whitespace-nowrap">
+              Mental Wellness
             </p>
-            <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-200 rounded-full"></div>
           </div>
+        </div> */}
 
-          {/* Peace of Mind Card */}
-          <div className="bg-slate-800 rounded-lg p-6 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">Peace of Mind</h3>
-            <p className="text-gray-400 mb-4">
-              Your mental wellbeing companion is here
-            </p>
-            <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-200 rounded-full"></div>
-          </div>
+        <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-slate-800 px-4 py-2 rounded-full shadow-md">
+          <p className="text-sm font-bold text-amber-600">Daily Growth</p>
+        </div>
 
-          {/* Daily Journal Card */}
-          <div className="bg-slate-800 rounded-lg p-6 shadow-lg">
-            <h3 className="text-xl font-semibold mb-2">Daily Journal</h3>
-            <p className="text-gray-400 mb-4">
-              Take a moment to reflect on your feelings today
-            </p>
-            <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-200 rounded-full"></div>
-          </div>
+        <div className="absolute -top-0 -right-4 transform rotate-45 bg-white dark:bg-slate-800 px-3 py-1 rounded shadow-md">
+          <p className="text-xs font-medium text-red-500">Healing</p>
+        </div>
 
-          {/* Community Support Card (spans two columns on desktop) */}
-          <div className="bg-slate-800 rounded-lg p-6 shadow-lg md:col-span-2 lg:col-span-1">
-            <h3 className="text-xl font-semibold mb-2">Community Support</h3>
-            <p className="text-gray-400 mb-4">
-              Connect with others who understand
-            </p>
-            <div className="h-1 w-full bg-gradient-to-r from-blue-400 to-blue-200 rounded-full"></div>
-          </div>
+        <div className="absolute -bottom-4 -left-4 transform -rotate-45 bg-white dark:bg-slate-800 px-3 py-1 rounded shadow-md">
+          <p className="text-xs font-medium text-teal-500">Self-care</p>
         </div>
       </div>
     </div>

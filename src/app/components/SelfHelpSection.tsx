@@ -2,6 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import { Activity, Wind, BookOpen, Play, ChevronUp } from "lucide-react";
+import MoodTracker from "./MoodTracker";
 
 type ExerciseCardProps = {
   icon: React.ReactNode;
@@ -24,8 +25,8 @@ const ExerciseCard = ({
         {icon}
       </div>
       <div>
-        <div className="text-white font-medium">{title}</div>
-        <div className="text-gray-400 text-sm">{duration}</div>
+        <div className="text-[#49111C] md:text-xl font-bold">{title}</div>
+        <div className="text-pink-500 text-sm md:text-base">{duration}</div>
       </div>
     </div>
   );
@@ -54,7 +55,7 @@ const MoodButton = ({ color, label, isSelected = false }: MoodButtonProps) => {
 
 export default function SelfHelpSection() {
   return (
-    <div className="min-h-screen bg-indigo-950 text-white">
+    <div className="min-h-screen bg-[#da1674] text-white">
       <Head>
         <title>Self-Help Tools For Your Wellbeing | DeepSoul</title>
         <meta
@@ -63,26 +64,34 @@ export default function SelfHelpSection() {
         />
       </Head>
 
-      <main className="container mx-auto px-4 py-8">
-        <div className="flex justify-center mb-6">
-          <button className="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium">
-            Daily Practice
-          </button>
-        </div>
-
+      <div className="mx-auto px-4 py-8">
         <div className="text-center mb-10">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Self-Help Tools For Your Wellbeing
           </h1>
-          <p className="text-gray-300 max-w-3xl mx-auto">
+          <p className="text-gray-100 max-w-2xl mx-auto">
             Build resilience and mindfulness with our extensive library of
             guided exercises, meditations, and personalized activities.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-gray-900 rounded-xl p-6">
-            <h2 className="text-xl font-bold mb-6">Featured Exercises</h2>
+          <div className="lg:col-span-2 bg-[#ffb2d7] rounded-xl p-6">
+            <div className="my-5">
+              <div className="flex justify-between my-2">
+                <h3 className="font-bold">Your Daily Progress</h3>
+                <span className="text-blue-400">60%</span>
+              </div>
+              <div className="w-full bg-gray-800 rounded-full h-2">
+                <div className="bg-gradient-to-r from-[#49111C] to-pink-400 h-2 rounded-full w-3/5"></div>
+              </div>
+              <div className="text-sm text-pink-600 mt-2">
+                3 of 5 exercises completed
+              </div>
+            </div>
+            <h2 className="text-lg mt-10 mb-5 md:text-xl text-pink-600  font-bold ">
+              Featured Exercises
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ExerciseCard
@@ -113,57 +122,10 @@ export default function SelfHelpSection() {
                 bgColor="bg-blue-500"
               />
             </div>
-
-            <div className="mt-10">
-              <div className="flex justify-between mb-2">
-                <h3 className="font-bold">Your Daily Progress</h3>
-                <span className="text-blue-400">60%</span>
-              </div>
-              <div className="w-full bg-gray-800 rounded-full h-2">
-                <div className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full w-3/5"></div>
-              </div>
-              <div className="text-sm text-gray-400 mt-2">
-                3 of 5 exercises completed
-              </div>
-            </div>
           </div>
 
-          <div className="flex flex-col gap-6">
-            <div className="bg-gray-900 rounded-xl p-6">
-              <h2 className="text-xl font-bold mb-4">Personalized For You</h2>
-              <p className="text-gray-300">
-                Exercises tailored to your needs and goals based on your
-                progress.
-              </p>
-            </div>
-
-            <div className="bg-gray-900 rounded-xl p-6">
-              <h2 className="text-xl font-bold mb-4">Track Your Mood</h2>
-              <p className="text-gray-300 mb-6">
-                Monitor your emotional wellbeing with our daily check-ins.
-              </p>
-
-              <div className="flex justify-between">
-                <MoodButton color="bg-red-600" label="Low" />
-                <MoodButton color="bg-orange-500" label="Mild" />
-                <MoodButton
-                  color="bg-amber-500"
-                  label="Okay"
-                  isSelected={true}
-                />
-                <MoodButton color="bg-green-600" label="Good" />
-                <MoodButton color="bg-blue-500" label="Great" />
-              </div>
-            </div>
-          </div>
+          <MoodTracker />
         </div>
-      </main>
-
-      {/* Floating scroll to top button */}
-      <div className="fixed bottom-8 right-8">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-colors">
-          <ChevronUp size={24} />
-        </button>
       </div>
     </div>
   );

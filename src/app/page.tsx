@@ -10,15 +10,15 @@ export default function Home() {
   return (
     <>
       <header>
+     
         <Navbar />
       </header>
 
       <main>
-        
         <HeroSection />
-        <FeaturesSection/>
-        <TherapistsSection/>
-        <SelfHelpSection/>
+        <FeaturesSection />
+        <TherapistsSection />
+        <SelfHelpSection />
       </main>
       <footer>
         <Footer />
