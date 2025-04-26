@@ -7,12 +7,26 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./context/**/*.{js,ts,jsx,tsx}", // Make sure your context folder is included
   ],
-  theme: {
+ theme: {
     extend: {
-      colors: {
-        beigeLight: "#f9e2c5",
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 8s ease-in-out infinite',
+        'float-reverse': 'float-reverse 7s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'float-reverse': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(10px)' },
+        },
       },
     },
   },
+  // ...other config
+
   plugins: [],
 };

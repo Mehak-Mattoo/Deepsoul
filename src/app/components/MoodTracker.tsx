@@ -1,8 +1,38 @@
 // MoodTracker.tsx
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const MoodTracker = () => {
+
+      const { theme, toggleTheme } = useTheme();
+        const [mounted, setMounted] = useState(false);
+      
+    
+        useEffect(() => {
+          setMounted(true);
+        }, []);
+    
+        const mainContainer =
+          theme === "dark"
+            ? "bg-[#121212] transition-colors"
+            : "bg-[#da1674] transition-colors";
+    
+        const subtitle =
+          theme === "dark"
+            ? "text-gray-400 transition-colors"
+            : "text-[#49111C] transition-colors";
+    
+        const title =
+          theme === "dark"
+            ? "text-pink-400 transition-colors"
+            : "text-[#49111C] transition-colors";
+    
+        const cards =
+          theme === "dark"
+            ? "bg-[#282828] rounded-lg  transition-colors"
+            : "bg-[#ffb2d7] transition-colors";
+
   const [selectedMood, setSelectedMood] = useState<string>("Depress");
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
@@ -43,7 +73,7 @@ const MoodTracker = () => {
   return (
     <div className="flex flex-col items-center w-full max-w-md mx-auto">
       {/* Mood selector */}
-      <div className="bg-pink-100 rounded-xl shadow-lg w-full p-6 mb-4">
+      <div className={` rounded-xl shadow-lg w-full p-6 mb-6 ${cards}`}>
         <div className="flex justify-between items-center">
           {moods.map((mood) => (
             <div key={mood.name} className="flex flex-col items-center">
@@ -65,15 +95,15 @@ const MoodTracker = () => {
       </div>
 
       {/* Reason selector */}
-      <div className="bg-pink-100 rounded-xl shadow-lg w-full p-6">
-        <h2 className="text-2xl text-orange-500 font-bold mb-2 flex items-center">
+      <div className={` rounded-xl shadow-lg w-full p-6 mb-6 ${cards}`}>
+        <h2 className="text-xl md:text-2xl text-orange-500 font-bold mb-2 flex items-center">
           Why do you feel {selectedMood}?
           <span className="ml-2 text-2xl">
             {moods.find((m) => m.name === selectedMood)?.emoji}
           </span>
         </h2>
 
-        <p className="text-orange-300 mb-4">Select the most relevant option</p>
+        {/* <p className="text-orange-300 mb-4">Select the most relevant option</p> */}
 
         <div className="flex flex-wrap gap-2">
           {reasons.map((reason) => (

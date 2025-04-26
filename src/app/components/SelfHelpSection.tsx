@@ -1,14 +1,17 @@
 // pages/self-help-tools.tsx
-import React from "react";
-import Head from "next/head";
-import { Activity, Wind, BookOpen, Play, ChevronUp } from "lucide-react";
+"use client";
+import React, { useEffect, useState } from "react";
+
+import { Activity, Wind, BookOpen, Play } from "lucide-react";
 import MoodTracker from "./MoodTracker";
+import { useTheme } from "../context/ThemeContext";
 
 type ExerciseCardProps = {
   icon: React.ReactNode;
   title: string;
   duration: string;
   bgColor: string;
+  titles: string;
 };
 
 const ExerciseCard = ({
@@ -16,6 +19,7 @@ const ExerciseCard = ({
   title,
   duration,
   bgColor,
+  titles
 }: ExerciseCardProps) => {
   return (
     <div className="flex items-center gap-4 mb-6">
@@ -25,7 +29,7 @@ const ExerciseCard = ({
         {icon}
       </div>
       <div>
-        <div className="text-[#49111C] md:text-xl font-bold">{title}</div>
+        <div className={`${titles} md:text-xl font-bold`}>{title}</div>
         <div className="text-pink-500 text-sm md:text-base">{duration}</div>
       </div>
     </div>
@@ -54,33 +58,56 @@ const MoodButton = ({ color, label, isSelected = false }: MoodButtonProps) => {
 };
 
 export default function SelfHelpSection() {
-  return (
-    <div className="min-h-screen bg-[#da1674] text-white">
-      <Head>
-        <title>Self-Help Tools For Your Wellbeing | DeepSoul</title>
-        <meta
-          name="description"
-          content="Build resilience and mindfulness with our guided exercises, meditations, and personalized activities."
-        />
-      </Head>
 
-      <div className="mx-auto px-4 py-8">
+  
+      const { theme, toggleTheme } = useTheme();
+      const [mounted, setMounted] = useState(false);
+    
+  
+      useEffect(() => {
+        setMounted(true);
+      }, []);
+  
+      const mainContainer =
+        theme === "dark"
+          ? "bg-[#121212] transition-colors"
+          : "bg-[#da1674] transition-colors";
+  
+      const subtitle =
+        theme === "dark"
+          ? "text-gray-400 transition-colors"
+          : "text-[#49111C] transition-colors";
+  
+      const titles =
+        theme === "dark"
+          ? "text-pink-400 transition-colors"
+          : "text-[#49111C] transition-colors";
+  
+      const cards =
+        theme === "dark"
+          ? "bg-[#282828] rounded-lg  transition-colors"
+          : "bg-[#ffb2d7] transition-colors";
+  return (
+    <div className={`${mainContainer} text-white min-h-screen p-6 md:p-10`}>
+      <div className="mx-auto p-4">
         <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          <h1
+            className={`text-3xl md:text-5xl lg:text-6xl font-bold mb-4 ${titles}`}
+          >
             Self-Help Tools For Your Wellbeing
           </h1>
-          <p className="text-gray-100 max-w-2xl mx-auto">
+          <p className={`text-sm md:text-base  ${subtitle} max-w-2xl mx-auto`}>
             Build resilience and mindfulness with our extensive library of
             guided exercises, meditations, and personalized activities.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-[#ffb2d7] rounded-xl p-6">
+          <div className={`lg:col-span-2 ${cards} rounded-xl p-6`}>
             <div className="my-5">
               <div className="flex justify-between my-2">
                 <h3 className="font-bold">Your Daily Progress</h3>
-                <span className="text-blue-400">60%</span>
+                {/* <span className="text-b">60%</span> */}
               </div>
               <div className="w-full bg-gray-800 rounded-full h-2">
                 <div className="bg-gradient-to-r from-[#49111C] to-pink-400 h-2 rounded-full w-3/5"></div>
@@ -99,6 +126,7 @@ export default function SelfHelpSection() {
                 title="Guided Meditation"
                 duration="10 min"
                 bgColor="bg-purple-500"
+                titles={titles}
               />
 
               <ExerciseCard
@@ -106,6 +134,7 @@ export default function SelfHelpSection() {
                 title="Breathing Exercise"
                 duration="5 min"
                 bgColor="bg-emerald-500"
+                titles={titles}
               />
 
               <ExerciseCard
@@ -113,6 +142,7 @@ export default function SelfHelpSection() {
                 title="Mindful Journaling"
                 duration="15 min"
                 bgColor="bg-amber-500"
+                titles={titles}
               />
 
               <ExerciseCard
@@ -120,6 +150,7 @@ export default function SelfHelpSection() {
                 title="Sleep Stories"
                 duration="20 min"
                 bgColor="bg-blue-500"
+                titles={titles}
               />
             </div>
           </div>

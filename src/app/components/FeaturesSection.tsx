@@ -1,7 +1,7 @@
 // pages/index.tsx
 "use client";
-import React, { useState } from "react";
-import Head from "next/head";
+import React, { useEffect, useState } from "react";
+
 import {
   Calendar,
   Heart,
@@ -12,25 +12,30 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y } from "swiper/modules";
+import {  Pagination, A11y } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useTheme } from "../context/ThemeContext";
 
 const FeatureCard = ({
   icon,
   title,
   description,
+  cardClass,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
+  cardClass: string;
 }) => {
   return (
-    <div className="bg-[#49111C] rounded-lg p-6 flex flex-col items-start h-full">
+    <div
+      className={`${cardClass} rounded-lg p-6 flex flex-col items-start h-full`}
+    >
       <div className="text-white p-3 rounded-lg mb-4">{icon}</div>
       <h3 className="text-orange-300 text-xl font-bold mb-2">{title}</h3>
       <p className="text-orange-100">{description}</p>
@@ -39,8 +44,34 @@ const FeatureCard = ({
 };
 
 export default function FeaturesSection() {
+  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   // Store swiper instance
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const mainContainer =
+    theme === "dark"
+      ? "bg-[#121212] transition-colors"
+      : "bg-[#8DB38B] transition-colors";
+
+  const subtitle =
+    theme === "dark"
+      ? "text-gray-400 transition-colors"
+      : "text-white transition-colors";
+
+  const title =
+    theme === "dark"
+      ? "text-[#8DB38B] transition-colors"
+      : "text-white transition-colors";
+
+  const cards =
+    theme === "dark"
+      ? "bg-[#282828] transition-colors"
+      : "bg-[#49111C] transition-colors";
 
   // Define your feature cards data
   const features = [
@@ -81,21 +112,30 @@ export default function FeaturesSection() {
     },
   ];
 
+  if (!mounted) {
+    // Return a placeholder or loading state
+    return <div className="min-h-screen bg-gray-800"></div>;
+  }
+
   return (
-    <div className="min-h-screen bg-[#8DB38B] text-white">
-      <div className=" mx-auto px-4 py-16">
+    <div
+      className={` ${mainContainer} text-white min-h-screen  p-6 md:p-10`}
+    >
+      <div className="mx-auto flex flex-col ">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1
+            className={`${title} text-3xl md:text-5xl lg:text-6xl font-bold  mb-4`}
+          >
             Your Complete Mental Wellness Solution
           </h1>
-          <p className=" text-lg max-w-3xl mx-auto">
+          <p className={` ${subtitle} text-sm md:text-base max-w-3xl mx-auto`}>
             DeepSoul combines multiple approaches to provide comprehensive
             support for your mental wellbeing journey.
           </p>
         </div>
 
         {/* Features Swiper with Custom Navigation */}
-        <div className="relative">
+        <div className="relative  pt-5 md-mt-0 mt-10">
           <Swiper
             modules={[Pagination, A11y]}
             spaceBetween={20}
@@ -120,13 +160,14 @@ export default function FeaturesSection() {
                   icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
+                  cardClass={cards}
                 />
               </SwiperSlide>
             ))}
           </Swiper>
 
           {/* Custom navigation buttons */}
-          <div className="flex justify-center gap-4 mt-4">
+          <div className="flex justify-center gap-4 mt-8 md:mt-4">
             <button
               onClick={() => swiper?.slidePrev()}
               className="bg-[#68a764] hover:bg-[#588e56] text-white p-3 rounded-full shadow-lg transition duration-200"
@@ -144,12 +185,6 @@ export default function FeaturesSection() {
           </div>
         </div>
       </div>
-
-      {/* <footer className="mt-20 py-8 bg-gray-900">
-        <div className="container mx-auto px-4 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} DeepSoul. All rights reserved.</p>
-        </div>
-      </footer> */}
     </div>
   );
 }
