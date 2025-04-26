@@ -6,38 +6,33 @@ import { ArrowUp, Facebook, Twitter, Instagram } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const Footer: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-    
-        const { theme, toggleTheme } = useTheme();
-        const [mounted, setMounted] = useState(false);
-      
-    
-        useEffect(() => {
-          setMounted(true);
-        }, []);
-    
-        const mainContainer =
-          theme === "dark"
-            ? "bg-[#121212] text-gray-300 transition-colors"
-            : "bg-[#8db38b] transition-colors";
-    
-        const subtitle =
-          theme === "dark"
-            ? "text-blue-400 transition-colors"
-            : "text-[#49111C] transition-colors";
-    
-        const titles =
-          theme === "dark"
-            ? "text-pink-400 transition-colors"
-            : "text-[#49111C] transition-colors";
-    
-        const cards =
-          theme === "dark"
-            ? "bg-[#282828] rounded-lg  transition-colors"
-            : "bg-[#ffb2d7] transition-colors";
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const mainContainer =
+    theme === "dark"
+      ? "bg-[#121212] text-gray-300 transition-colors"
+      : "bg-[#8db38b] transition-colors";
+
+  const subtitle =
+    theme === "dark"
+      ? "text-blue-400 transition-colors"
+      : "text-[#49111C] transition-colors";
+
+  const titles =
+    theme === "dark"
+      ? "text-pink-400 transition-colors"
+      : "text-green-800 transition-colors";
+
+  const cards =
+    theme === "dark"
+      ? "bg-[#282828] rounded-lg  transition-colors"
+      : "bg-[#ffb2d7] transition-colors";
   return (
-
-    
     <footer className={`${mainContainer} `}>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -48,16 +43,14 @@ const Footer: React.FC = () => {
               <span className={`${subtitle} text-3xl font-bold`}>DeepSoul</span>
             </Link>
 
-            <p >
-              Your journey to inner peace and mental wellbeing starts here.
-            </p>
+            <p>Your journey to inner peace and mental wellbeing starts here.</p>
 
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Link href="#" >
+              <Link href="#">
                 <Facebook size={20} />
               </Link>
-              <Link href="#" >
+              <Link href="#">
                 <Twitter size={20} />
               </Link>
               <Link href="#">
@@ -126,9 +119,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/blogs">
-                  Blogs
-                </Link>
+                <Link href="/blogs">Blogs</Link>
               </li>
               <li>
                 <Link
@@ -162,14 +153,10 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-6">Company</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/about" >
-                  About Us
-                </Link>
+                <Link href="/about">About Us</Link>
               </li>
               <li>
-                <Link href="/team" >
-                  Our Team
-                </Link>
+                <Link href="/team">Our Team</Link>
               </li>
               <li>
                 <Link
@@ -203,8 +190,8 @@ const Footer: React.FC = () => {
       {/* Footer Bottom / Copyright */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center">
-          <div className=" text-sm mb-4 md:mb-0">
-            © 2025 DeepSoul. All rights reserved.
+          <div className={`${titles} font-bold text-sm mb-4 md:mb-0`}>
+            © Made by Mehak Mattoo. All rights reserved.
           </div>
 
           <div className="flex items-center space-x-6">
