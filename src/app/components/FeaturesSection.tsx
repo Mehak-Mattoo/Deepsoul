@@ -44,7 +44,7 @@ const FeatureCard = ({
 };
 
 export default function FeaturesSection() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   // Store swiper instance
   const [swiper, setSwiper] = useState<SwiperType | null>(null);

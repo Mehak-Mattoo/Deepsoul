@@ -9,13 +9,9 @@ import { motion } from "framer-motion";
 const HeroSection: React.FC = () => {
   const {
     theme,
-    toggleTheme,
+    
   }: { theme: "light" | "dark"; toggleTheme: () => void } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const mainContainer =
     theme === "dark"

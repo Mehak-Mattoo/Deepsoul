@@ -42,31 +42,14 @@ type MoodButtonProps = {
   isSelected?: boolean;
 };
 
-const MoodButton = ({ color, label, isSelected = false }: MoodButtonProps) => {
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <div
-        className={`${color} w-10 h-10 rounded-full ${
-          isSelected
-            ? "ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-900"
-            : ""
-        }`}
-      ></div>
-      <span className="text-xs text-gray-300">{label}</span>
-    </div>
-  );
-};
 
 export default function SelfHelpSection() {
 
   
-      const { theme, toggleTheme } = useTheme();
-      const [mounted, setMounted] = useState(false);
+      const { theme } = useTheme();
+    
     
   
-      useEffect(() => {
-        setMounted(true);
-      }, []);
   
       const mainContainer =
         theme === "dark"

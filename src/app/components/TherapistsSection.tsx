@@ -8,13 +8,8 @@ import { useTheme } from "../context/ThemeContext";
 
 const TherapistsSection: React.FC = () => {
 
-    const { theme, toggleTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-  
-
-    useEffect(() => {
-      setMounted(true);
-    }, []);
+    const { theme } = useTheme();
+    
 
     const mainContainer =
       theme === "dark"

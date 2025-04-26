@@ -6,12 +6,8 @@ import { ArrowUp, Facebook, Twitter, Instagram } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const Footer: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { theme } = useTheme();
+ 
 
   const mainContainer =
     theme === "dark"
@@ -28,10 +24,7 @@ const Footer: React.FC = () => {
       ? "text-pink-400 transition-colors"
       : "text-green-800 transition-colors";
 
-  const cards =
-    theme === "dark"
-      ? "bg-[#282828] rounded-lg  transition-colors"
-      : "bg-[#ffb2d7] transition-colors";
+
   return (
     <footer className={`${mainContainer} `}>
       {/* Main Footer Content */}

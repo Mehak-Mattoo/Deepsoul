@@ -5,28 +5,10 @@ import { useTheme } from "../context/ThemeContext";
 
 const MoodTracker = () => {
 
-      const { theme, toggleTheme } = useTheme();
-        const [mounted, setMounted] = useState(false);
-      
+      const { theme } = useTheme();
+       
     
-        useEffect(() => {
-          setMounted(true);
-        }, []);
-    
-        const mainContainer =
-          theme === "dark"
-            ? "bg-[#121212] transition-colors"
-            : "bg-[#da1674] transition-colors";
-    
-        const subtitle =
-          theme === "dark"
-            ? "text-gray-400 transition-colors"
-            : "text-[#49111C] transition-colors";
-    
-        const title =
-          theme === "dark"
-            ? "text-pink-400 transition-colors"
-            : "text-[#49111C] transition-colors";
+       
     
         const cards =
           theme === "dark"
