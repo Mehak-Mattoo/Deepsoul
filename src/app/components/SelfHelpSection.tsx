@@ -36,11 +36,7 @@ const ExerciseCard = ({
   );
 };
 
-type MoodButtonProps = {
-  color: string;
-  label: string;
-  isSelected?: boolean;
-};
+
 
 
 export default function SelfHelpSection() {
