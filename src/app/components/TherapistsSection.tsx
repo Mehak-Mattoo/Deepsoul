@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { Calendar, Clock, Video, Phone } from "lucide-react";
 import therapist from "../../../public/therapist.png";

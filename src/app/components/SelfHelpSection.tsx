@@ -1,6 +1,6 @@
 // pages/self-help-tools.tsx
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Activity, Wind, BookOpen, Play } from "lucide-react";
 import MoodTracker from "./MoodTracker";

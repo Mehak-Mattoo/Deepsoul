@@ -1,6 +1,6 @@
 // components/Footer.tsx
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowUp, Facebook, Twitter, Instagram } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";

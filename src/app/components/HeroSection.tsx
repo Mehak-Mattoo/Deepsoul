@@ -1,6 +1,6 @@
 // components/HeroSection.tsx
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import homeImg from "../../../public/home.png";
 import Image from "next/image";
 import { useTheme } from "../context/ThemeContext";
