@@ -21,6 +21,11 @@ const TherapistsSection: React.FC = () => {
         ? "text-gray-400 transition-colors"
         : "text-[#49111C] transition-colors";
 
+         const subtitle2 =
+           theme === "dark"
+             ? "text-gray-400 transition-colors"
+             : "text-orange-800 transition-colors";
+
     const title =
       theme === "dark"
         ? "text-[#8DB38B] transition-colors"
@@ -76,7 +81,7 @@ const TherapistsSection: React.FC = () => {
                 <h3 className="text-base md:text-lg font-semibold mb-1">
                   Flexible Scheduling
                 </h3>
-                <p className="text-gray-400 text-sm ">
+                <p className={`${subtitle2} text-sm`}>
                   Book appointments that fit your busy life
                 </p>
               </div>
@@ -91,7 +96,7 @@ const TherapistsSection: React.FC = () => {
                 <h3 className="text-base md:text-lg font-semibold mb-1">
                   Personalized Matching
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className={`${subtitle2} text-sm`}>
                   Find therapists who specialize in your specific needs
                 </p>
               </div>
@@ -106,7 +111,7 @@ const TherapistsSection: React.FC = () => {
                 <h3 className="text-base md:text-lg font-semibold mb-1">
                   Virtual Sessions
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className={`${subtitle2} text-sm`}>
                   Attend therapy from the comfort of your home
                 </p>
               </div>
@@ -121,7 +126,7 @@ const TherapistsSection: React.FC = () => {
                 <h3 className="text-base md:text-lg font-semibold mb-1">
                   Direct Communication
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className={`${subtitle2} text-sm`}>
                   Message your therapist between sessions
                 </p>
               </div>

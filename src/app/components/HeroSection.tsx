@@ -6,12 +6,10 @@ import Image from "next/image";
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 
-const HeroSection: React.FC = () => {
-  const {
-    theme,
-    
-  }: { theme: "light" | "dark"; toggleTheme: () => void } = useTheme();
 
+const HeroSection: React.FC = () => {
+  const { theme }: { theme: "light" | "dark"; toggleTheme: () => void } =
+    useTheme();
 
   const mainContainer =
     theme === "dark"
@@ -63,19 +61,33 @@ const HeroSection: React.FC = () => {
       {/* Left Column - Hero Text */}
       <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-6">
         <h1
-          className={`${title} text-5xl md:text-6xl lg:text-7xl font-semibold mb-6`}
+          className={`${title}  text-5xl md:text-6xl lg:text-7xl font-semibold mb-6`}
         >
           Your journey to{" "}
-          <span className="font-bold text-[#F40076]">inner peace </span>
+          <span  className=" font-bold text-[#F40076]">inner peace </span>
           begins here
         </h1>
-        <p
-          className={`${subtitle} text-xs md:text-base leading-relaxed max-w-xl`}
+        <div
+          className={`${subtitle}  font-medium text-xs md:text-sm leading-relaxed max-w-xl`}
         >
           DeepSoul connects you with professional therapists, supportive
           community, and powerful self-help tools for your mental wellbeing
           journey.
-        </p>
+        </div>
+        
+        <form className="flex items-center gap-3 mt-6 rounded-md max-w-md">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-1 px-3 py-2 border border-orange-800 rounded-md outline-none focus:border-orange-900"
+          />
+          <button
+            type="submit"
+            className={`px-4 py-2 bg-orange-800 text-white rounded-md hover:bg-orange-900 transition `}
+          >
+            Book an Appointment
+          </button>
+        </form>
       </div>
 
       {/* Right Column - Hero Image with Text Bubbles */}

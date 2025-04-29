@@ -14,10 +14,10 @@ const Footer: React.FC = () => {
       ? "bg-[#121212] text-gray-300 transition-colors"
       : "bg-[#8db38b] transition-colors";
 
-  const subtitle =
-    theme === "dark"
-      ? "text-blue-400 transition-colors"
-      : "text-[#49111C] transition-colors";
+const subtitle =
+  theme === "dark"
+    ? "text-pink-500 transition-colors"
+    : "text-orange-900 transition-colors";
 
   const titles =
     theme === "dark"
@@ -33,7 +33,12 @@ const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center space-x-2">
-              <span className={`${subtitle} text-3xl font-bold`}>DeepSoul</span>
+              <span
+                style={{ fontFamily: "var(--font-pacifico)" }}
+                className={`${subtitle} text-3xl font-bold`}
+              >
+                DeepSoul
+              </span>
             </Link>
 
             <p>Your journey to inner peace and mental wellbeing starts here.</p>

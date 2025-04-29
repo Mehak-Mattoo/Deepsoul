@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
   };
 
   // Define consistent text color classes for both mounted and unmounted states
-  const navClasses = `w-full z-50 fixed top-0 px-6 py-4 transition-colors duration-200 ${
+  const navClasses = `w-full z-50 fixed top-0 px-6 font-medium  py-4 transition-colors duration-200 ${
     theme === "dark" ? "bg-[#121212] text-white" : "bg-[#f9e2c5] text-black"
   }`;
 
@@ -37,7 +37,12 @@ const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo and Brand */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-pink-700 text-3xl font-bold">DeepSoul</span>
+            <span
+              style={{ fontFamily: "var(--font-pacifico)" }}
+               className="text-pink-600 text-3xl font-bold"
+            >
+              DeepSoul
+            </span>
           </Link>
 
           {/* Mobile menu button placeholder */}
@@ -46,7 +51,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation Links - Hidden on mobile */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex font-medium items-center space-x-8">
             <Link href="#" className={linkClasses}>
               Features
             </Link>
@@ -76,7 +81,12 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo and Brand */}
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-pink-700 text-3xl font-bold">DeepSoul</span>
+          <span
+            style={{ fontFamily: "var(--font-pacifico)" }}
+            className="text-pink-600 text-3xl font-bold"
+          >
+            DeepSoul
+          </span>
         </Link>
 
         {/* Mobile menu button - Only visible on small screens */}
